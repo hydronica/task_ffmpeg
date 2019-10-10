@@ -1,0 +1,13 @@
+# http service port for request health status
+status_port = 11002
+files_topic = "files"
+
+[bus]
+bus = "nsq" # options: stdio,file,nsq
+nsqd_hosts = ["nsqd:4150"]
+lookupd_hosts = ["nsqlookupd:4161"]
+
+[[rule]]
+path_template = "/watchfolder"
+lookback = 1      # the number of hours to lookback and check for files default is 24 hours
+frequency = "5s" # the time between checking the folder for new files default is 1h

@@ -1,0 +1,20 @@
+# http service port for request health status
+status_port = 11003
+
+done_topic = "done"
+done_channel = "retry"
+retried_topic = "retried" # publishes all retry tasks (disable with "-")
+retry_failed_topic = "retry-failed" # publishes tasks that ultimately exceeded the retry count (disable with "-")
+
+[bus]
+bus = "nsq" # options: stdio,file,nsq
+nsqd_hosts = ["nsqd:4150"]
+lookupd_hosts = ["nsqlookupd:4161"]
+
+
+# ------------------------ Bidder RETRY --------------------------
+[[rule]]
+type = "np-extract"
+retry = 5
+wait = "1m"
+topic = ""

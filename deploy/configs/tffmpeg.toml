@@ -1,0 +1,12 @@
+# http service port for request health status
+status_port = 11005
+dest_folder = "/watchfolder"
+
+[bus]
+bus = "nsq"
+in_topic = "ffmpeg"
+in_channel = "ffmpeg"
+
+nsqd_hosts = ["nsqd:4150"]
+lookupd_hosts = ["nsqlookupd:4161"]
+

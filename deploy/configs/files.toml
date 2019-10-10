@@ -1,0 +1,20 @@
+# http service port for request health status
+status_port = 11001
+
+[bus]
+bus = "nsq"
+in_topic = "files"
+in_channel = "files"
+
+nsqd_hosts = ["nsqd:4150"]
+lookupd_hosts = ["nsqlookupd:4161"]
+
+[[rule]]
+type = "mediainfo"
+src_pattern = "/watchfolder/*"
+info_template = "{SRC_PATH}"
+
+[[rule]]
+type = "ffmpeg"
+src_pattern = "/mediainfo/*.json"
+info_template = "{SRC_PATH}"

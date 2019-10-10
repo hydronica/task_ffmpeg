@@ -1,0 +1,12 @@
+# http service port for request health status
+status_port = 11004
+dest_folder = "/mediainfo"
+
+[bus]
+bus = "nsq"
+in_topic = "mediainfo"
+in_channel = "mediainfo"
+
+nsqd_hosts = ["nsqd:4150"]
+lookupd_hosts = ["nsqlookupd:4161"]
+

@@ -1,0 +1,64 @@
+version: "3.7"
+
+services:
+  nsqd:
+    networks:
+      - nsqnet
+    image: nsqio/nsq:v1.2.0
+    container_name: nsqd
+    command:
+      - sh
+      - -c
+      - "/nsqd --lookupd-tcp-address=nsqlookupd:4160"
+    depends_on:
+      - nsqlookupd
+    ports:
+      - "4150:4150"
+      - "4151:4151"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5k"
+        max-file: "5"
+
+  nsqadmin:
+    networks:
+      - nsqnet
+    image: nsqio/nsq:v1.2.0
+    container_name: nsqadmin
+    command:
+      - sh
+      - -c
+      - "/nsqadmin --lookupd-http-address=nsqlookupd:4161"
+    depends_on:
+      - nsqlookupd
+    ports:
+      - "4171:4171"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5k"
+        max-file: "5"
+
+  nsqlookupd:
+    networks:
+      - nsqnet
+    image: nsqio/nsq:v1.2.0
+    container_name: nsqlookupd
+    command:
+      - sh
+      - -c
+      - /nsqlookupd 
+    ports:
+      - "4160:4160"
+      - "4161:4161"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5k"
+        max-file: "5"
+
+networks:
+  nsqnet:
+    external:
+      name: nsq_network_default
