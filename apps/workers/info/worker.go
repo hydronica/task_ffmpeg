@@ -44,10 +44,11 @@ func (w *worker) DoTask(ctx context.Context) (result task.Result, msg string) {
 	ctx, cancel := context.WithTimeout(ctx, time.Second*5)
 	defer cancel()
 
-	cmdStr := fmt.Sprintf("mediainfo --Output=JSON %s | jq -c '.' > %s", w.filePath, w.destPath)
-	err := exec.CommandContext(ctx, "sh", "-c", cmdStr).Run()
+	cmdStr := fmt.Sprintf(`mediainfo --Output=JSON "%s" | jq -c '.' > "%s"`, w.filePath, w.destPath)
+	cmd := exec.CommandContext(ctx, "sh", "-c", cmdStr)
+	b, err := cmd.CombinedOutput()
 	if err != nil {
-		fmt.Println("error running mediainfo", err)
+		fmt.Println("error running ffmpeg", err, "b:", string(b))
 		return task.Failed(err)
 	}
 

@@ -90,7 +90,7 @@ func (w *worker) DoTask(ctx context.Context) (result task.Result, msg string) {
 
 	encodeTime := time.Now().Format("2006-01-02T00:00:00")
 	defer cancel()
-	cmdStr := fmt.Sprintf("ffmpeg -hide_banner -i %s -c:v %s -c:a %s -crf %s -map_metadata -1 -metadata creation_time=%s %s",
+	cmdStr := fmt.Sprintf(`ffmpeg -hide_banner -i "%s" -c:v %s -c:a %s -crf %s -map_metadata -1 -metadata creation_time=%s "%s"`,
 		w.procPath, w.encoding, w.audio, w.crf, encodeTime, w.destPath)
 	fmt.Println("running command", cmdStr)
 	cmd := exec.CommandContext(ctx, "sh", "-c", cmdStr)
