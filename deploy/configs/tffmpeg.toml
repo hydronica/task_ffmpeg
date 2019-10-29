@@ -2,6 +2,12 @@
 status_port = 11005
 dest_folder = "/watchfolder"
 
+# default is libx265
+encode_type = "libx265"
+
+# new file extension, default is mp4
+new_file_type = "mkv"
+
 [bus]
 bus = "nsq"
 in_topic = "ffmpeg"

@@ -9,5 +9,5 @@ lookupd_hosts = ["nsqlookupd:4161"]
 
 [[rule]]
 path_template = "/watchfolder"
-lookback = 1      # the number of hours to lookback and check for files default is 24 hours
+lookback = 1     # the number of hours to lookback and check for files default is 24 hours
 frequency = "5m" # the time between checking the folder for new files default is 1h

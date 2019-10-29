@@ -10,13 +10,13 @@ RUN go get -u -d github.com/lib/pq
 RUN go get -u -d github.com/pelletier/go-toml
 RUN go get -u -d gopkg.in/BurntSushi/toml.v0
 RUN go get -u -d github.com/json-iterator/go
-COPY / /go/src/github.com/zJeremiah/task_ffmpeg
-WORKDIR /go/src/github.com/zJeremiah/task_ffmpeg
+COPY / /go/src/github.com/hydronica/task_ffmpeg
+WORKDIR /go/src/github.com/hydronica/task_ffmpeg
 RUN CGO_ENABLED=0 GOOS=linux make
 
 FROM alpine:3.8
 RUN apk add curl
-COPY --from=build /go/src/github.com/zJeremiah/task_ffmpeg/build/ /usr/bin/
+COPY --from=build /go/src/github.com/hydronica/task_ffmpeg/build/ /usr/bin/
 RUN chmod +x /usr/bin/
 
 

@@ -1,7 +1,7 @@
 PREFIX=/usr/local
 DESTDIR=
 version=$(shell git describe --tags 2> /dev/null || echo "no-version")
-GOFLAGS=-ldflags "-X github.com/zJeremiah/task_ffmpeg.Version=${version} -X github.com/zJeremiah/task_ffmpeg.BuildTimeUTC=`date -u '+%Y-%m-%d_%I:%M:%S%p'`"
+GOFLAGS=-ldflags "-X github.com/hydronica/task_ffmpeg.Version=${version} -X github.com/hydronica/task_ffmpeg.BuildTimeUTC=`date -u '+%Y-%m-%d_%I:%M:%S%p'`"
 BINDIR=${PREFIX}/bin
 
 BLDDIR = build

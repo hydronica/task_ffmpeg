@@ -10,21 +10,21 @@ services:
       - "11005:11005"
     volumes:
       - type: bind
-        source: ${HOST_MEDIA} # E:\projects\go\src\github.com\zJeremiah\task_ffmpeg\mediafiles # This is a folder on the host machine to watch
+        source: ${HOST_MEDIA}  # set in .env file
         target: /watchfolder # this is in the docker container
         read_only: false
         volume:
           nocopy: true
       - type: bind
-        source: ${HOST_INFO} # E:\projects\go\src\github.com\zJeremiah\task_ffmpeg\mediainfo # This is a folder on the host machine
-        target: /mediainfo # this is in the docker container
+        source: ${HOST_INFO}  # set in .env file
+        target: /mediainfo 
         read_only: false
         volume:
           nocopy: true
     logging:
       driver: "json-file"
       options:
-        max-size: "5k"
+        max-size: "50k"
         max-file: "5"
 
   info:
@@ -36,13 +36,13 @@ services:
       - "11004:11004"
     volumes:
       - type: bind
-        source: ${HOST_MEDIA} # E:\projects\go\src\github.com\zJeremiah\task_ffmpeg\mediafiles # This is a folder on the host machine to watch
+        source: ${HOST_MEDIA}  # set in .env file
         target: /watchfolder # this is in the docker container
         read_only: false
         volume:
           nocopy: true
       - type: bind
-        source: ${HOST_INFO} # E:\projects\go\src\github.com\zJeremiah\task_ffmpeg\mediainfo # This is a folder on the host machine
+        source: ${HOST_INFO} # set in .env file
         target: /mediainfo # this is in the docker container
         read_only: false
         volume:
@@ -50,7 +50,7 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-size: "5k"
+        max-size: "50k"
         max-file: "5"
 
   files:
@@ -63,7 +63,7 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-size: "5k"
+        max-size: "50k"
         max-file: "5"
 
   filewatcher:
@@ -73,14 +73,14 @@ services:
     container_name: filewatcher
     volumes:
       - type: bind
-        source: ${HOST_MEDIA} # E:\projects\go\src\github.com\zJeremiah\task_ffmpeg\mediafiles # This is a folder on the host machine to watch
-        target: /watchfolder # this is in the docker container
+        source: ${HOST_MEDIA}  # set in .env file
+        target: /watchfolder   # this is in the docker container
         read_only: false
         volume:
           nocopy: true
       - type: bind
-        source: ${HOST_INFO} # E:\projects\go\src\github.com\zJeremiah\task_ffmpeg\mediainfo # This is a folder on the host machine
-        target: /mediainfo # this is in the docker container
+        source: ${HOST_INFO}  # set in .env file
+        target: /mediainfo    # this is in the docker container
         read_only: false
         volume:
           nocopy: true
@@ -89,7 +89,7 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-size: "5k"
+        max-size: "50k"
         max-file: "5"
 
 networks:
