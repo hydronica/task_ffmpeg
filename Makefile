@@ -2,20 +2,19 @@ PREFIX=/usr/local
 DESTDIR=
 version=$(shell git describe --tags 2> /dev/null || echo "no-version")
 GOFLAGS=-ldflags "-X github.com/hydronica/task_ffmpeg.Version=${version} -X github.com/hydronica/task_ffmpeg.BuildTimeUTC=`date -u '+%Y-%m-%d_%I:%M:%S%p'`"
-BINDIR=${PREFIX}/bin
 
-BLDDIR = build
+BLDDIR = deploy/bin
 EXT=
 ifeq (${GOOS},windows)
     EXT=.exe
 endif
 
-APPS = info tffmpeg
+APPS = info encoder
 
 all: $(APPS)
 
 $(BLDDIR)/info:     $(wildcard apps/workers/info/*.go)
-$(BLDDIR)/tffmpeg:  $(wildcard apps/workers/tffmpeg/*.go)
+$(BLDDIR)/encoder:  $(wildcard apps/workers/encoder/*.go)
 
 $(BLDDIR)/%: clean
 	@mkdir -p $(dir $@)
