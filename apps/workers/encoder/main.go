@@ -5,6 +5,7 @@ import (
 	"os/exec"
 
 	"github.com/hydronica/task_ffmpeg"
+	"github.com/jbsmith7741/go-tools/appenderr"
 	"github.com/pcelvng/task-tools/bootstrap"
 	"github.com/pcelvng/task-tools/file"
 )
@@ -17,7 +18,7 @@ Example task:
 )
 
 type options struct {
-	WorkingDir string `toml"working_dir" comment:"directory to store files for processing"`
+	WorkingDir string `toml:"working_dir" comment:"directory to store files for processing"`
 
 	File *file.Options `toml:"File"`
 }
@@ -41,6 +42,10 @@ func main() {
 
 func (o *options) Validate() error {
 	_, err := exec.LookPath("ffmpeg")
-
-	return err
+	errs := appenderr.New()
+	errs.Add(err)
+	if o.WorkingDir == "" {
+		errs.Addf("working_dir is required")
+	}
+	return errs.ErrOrNil()
 }
