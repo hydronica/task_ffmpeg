@@ -13,8 +13,14 @@ import (
 const (
 	taskType    = "task_ffmpeg"
 	description = `app will use the mediainfo json to determine how to process an encoding with ffmpeg
+info string options 
+- encoding: ffmpeg encoding; default: libx265
+- audio: ffmpeg audio; default: copy 
+- crf: default: 23. see https://trac.ffmpeg.org/wiki/Encode/H.264
+- dest: destination for the resulting file. If the filename is blank if will override the existing file. 
+
 Example task:
-{"type":"ffmpeg", "info":"/path/to/mediainfo/file.json"}`
+{"type":"ffmpeg", "info":"/path/to/mediainfo/file.mp4?dest=/path/to/media/file.done.mp4"}`
 )
 
 type options struct {

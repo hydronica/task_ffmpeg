@@ -3,7 +3,9 @@ module github.com/hydronica/task_ffmpeg
 go 1.18
 
 require (
-	github.com/json-iterator/go v1.1.12
+	github.com/dustin/go-humanize v1.0.0
+	github.com/jbsmith7741/go-tools v0.4.1
+	github.com/jbsmith7741/uri v0.5.1
 	github.com/pcelvng/task v0.5.6
 	github.com/pcelvng/task-tools v0.20.0
 )
@@ -13,7 +15,6 @@ require (
 	cloud.google.com/go/pubsub v1.17.0 // indirect
 	github.com/bitly/go-hostpool v0.1.0 // indirect
 	github.com/buger/jsonparser v1.1.1 // indirect
-	github.com/dustin/go-humanize v1.0.0 // indirect
 	github.com/go-sql-driver/mysql v1.6.0 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
@@ -22,9 +23,8 @@ require (
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/googleapis/gax-go/v2 v2.1.1 // indirect
 	github.com/hydronica/toml v0.4.2 // indirect
-	github.com/jbsmith7741/go-tools v0.4.1 // indirect
-	github.com/jbsmith7741/uri v0.5.1 // indirect
 	github.com/jmoiron/sqlx v1.3.3 // indirect
+	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/compress v1.13.5 // indirect
 	github.com/klauspost/cpuid v1.3.1 // indirect
 	github.com/lib/pq v1.10.6 // indirect
