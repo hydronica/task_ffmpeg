@@ -33,7 +33,7 @@ require (
 	github.com/hydronica/toml v0.4.2 // indirect
 	github.com/jmoiron/sqlx v1.3.3 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
-	github.com/klauspost/compress v1.13.5 // indirect
+	github.com/klauspost/compress v1.18.7 // indirect
 	github.com/klauspost/cpuid v1.3.1 // indirect
 	github.com/lib/pq v1.10.6 // indirect
 	github.com/minio/md5-simd v1.1.0 // indirect
